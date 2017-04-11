@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 
-const {BlogPosts} = require('./models');
+const {
+    BlogPosts
+} = require('./models');
 
 // Delete blog posts (by id)!
 router.delete('/:id', (req, res) => {
@@ -21,7 +23,7 @@ router.delete('/:id', (req, res) => {
 // call `BlogPosts.updateItem` with updated blog post.
 router.put('/:id', jsonParser, (req, res) => {
     const requiredFields = ['title', 'content', 'author', 'publishDate', 'id'];
-    for (let i=0; i<requiredFields.length; i++) {
+    for (let i = 0; i < requiredFields.length; i++) {
         const field = requiredFields[i];
         if (!(field in req.body)) {
             const message = `Missing \`${field}\` in request body`
@@ -44,7 +46,7 @@ router.put('/:id', jsonParser, (req, res) => {
         author: req.body.author,
         publishDate: req.body.publishDate
     });
-    res.status(204).json(updatedItem);
+    res.status(200).json(updatedItem);
 })
 
 module.exports = router;
