@@ -1,2 +1,8 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key: a62a7acc-83c3-4013-8ea5-14344efede7d
+  app: morning-cliffs-42744
+  on:
+    repo: codysperoff/node-router-blog-api
