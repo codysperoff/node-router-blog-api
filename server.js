@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const morgan = require('morgan');
 
@@ -5,6 +6,16 @@ const app = express();
 
 const newBlogPostsRouter = require('./newBlogPostsRouter');
 const deleteBlogPostsRouter = require('./deleteBlogPostsRouter');
+
+mongoose.Promise = global.Promise;
+
+const {
+    PORT,
+    DATABASE_URL
+} = require('./config');
+const {
+    BlogPosts
+} = require('./models');
 
 // log the http layer
 app.use(morgan('common'));
